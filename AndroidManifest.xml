@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.logme"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+                
+        <activity
+            android:name="com.example.logme.LogMeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!--  Daily Activity -->
+        <activity android:name="com.example.logme.Daily" android:screenOrientation="portrait"/>
+         
+        <!--  Weekly Activity -->
+        <activity android:name="com.example.logme.Weekly" android:screenOrientation="portrait"/>
+         
+        <!--  Total Activity -->
+        <activity android:name="com.example.logme.Total" android:screenOrientation="portrait"/>
+        
+        <!--  graphWeekly Activity -->
+        <activity android:name="com.example.logme.graphWeekly" android:screenOrientation="landscape"/>
+        
+        <!--  graphDaily Activity -->
+        <activity android:name="com.example.logme.graphDaily" android:screenOrientation="landscape"/>
+        
+        <service 
+            android:name="com.example.logme.service.MyService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+        
+        <receiver 
+            android:name="com.example.logme.service.BootReceiver" 
+            android:enabled="true"
+            android:exported="true">
+			<intent-filter >
+		    	<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+        </receiver>
+
+    </application>
+</manifest>
